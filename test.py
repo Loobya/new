@@ -14,13 +14,14 @@ def revsip10(url):
         # Read the proxy list from a file
        # with open(input("Enter the proxy file name : "), "r") as f:
          #   proxy_list = f.readlines()
-        if os.path.isfile(input("Enter the proxy file name : ")):
-       with open(input("Enter the proxy file name : "), "r") as f:
-            proxy_list = f.readlines()
-        
-        else:
-            print("The file you specified could not be found.")
-        
+        while True:
+            filename = input("Enter the proxy file name : ")
+            if os.path.isfile(filename):
+                with open(filename, "r") as f:
+                    proxy_list = f.readlines()
+                break
+            else:
+                print("The file you specified could not be found.")
 
         # Select a random proxy from the list
         proxy = {"http": random.choice(proxy_list), "https": random.choice(proxy_list)}
