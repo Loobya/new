@@ -31,6 +31,7 @@ def revsip10(url):
         pass
 
 def Main():
+    global proxy_list
     try:
         list = input(colored("\n Give Me List :~# ", random.choice(['red', 'green', 'yellow', 'blue', 'magenta', 'cyan'])))
         crownes = input(colored("thread :~# ", random.choice(['red', 'green', 'yellow', 'blue', 'magenta', 'cyan'])))
