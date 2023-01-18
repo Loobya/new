@@ -1,4 +1,5 @@
 import re
+import os
 import random
 import requests
 from multiprocessing import Pool
@@ -11,8 +12,16 @@ def revsip10(url):
         ua = UserAgent()
         random_user_agent = ua.random
         # Read the proxy list from a file
-        with open(input("Enter the proxy file name : "), "r") as f:
+       # with open(input("Enter the proxy file name : "), "r") as f:
+         #   proxy_list = f.readlines()
+        if os.path.isfile(input("Enter the proxy file name : ")):
+       with open(input("Enter the proxy file name : "), "r") as f:
             proxy_list = f.readlines()
+        
+        else:
+            print("The file you specified could not be found.")
+        
+
         # Select a random proxy from the list
         proxy = {"http": random.choice(proxy_list), "https": random.choice(proxy_list)}
         head = {'User-Agent': random_user_agent,'proxies':proxy}
