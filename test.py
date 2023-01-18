@@ -14,15 +14,7 @@ def revsip10(url):
         # Read the proxy list from a file
        # with open(input("Enter the proxy file name : "), "r") as f:
          #   proxy_list = f.readlines()
-        while True:
-            filename = input("Enter the proxy file name : ")
-            if os.path.isfile(filename):
-                with open(filename, "r") as f:
-                    proxy_list = f.readlines()
-                break
-            else:
-                print("The file you specified could not be found.")
-
+        
         # Select a random proxy from the list
         proxy = {"http": random.choice(proxy_list), "https": random.choice(proxy_list)}
         head = {'User-Agent': random_user_agent,'proxies':proxy}
@@ -42,6 +34,15 @@ def Main():
     try:
         list = input(colored("\n Give Me List :~# ", random.choice(['red', 'green', 'yellow', 'blue', 'magenta', 'cyan'])))
         crownes = input(colored("thread :~# ", random.choice(['red', 'green', 'yellow', 'blue', 'magenta', 'cyan'])))
+        while True:
+            filename = input("Enter the proxy file name : ")
+            if os.path.isfile(filename):
+                with open(filename, "r") as f:
+                    proxy_list = f.readlines()
+                break
+            else:
+                print("The file you specified could not be found.")
+
         rev10 = open(list, 'r').read().splitlines()
         pp = Pool(int(crownes))
         pr = pp.map(revsip10, rev10)
