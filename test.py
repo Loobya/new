@@ -7,6 +7,7 @@ from termcolor import colored
 from fake_useragent import UserAgent
 
 def revsip10(url):
+    global proxy_list
     try:
         # Generate a random user-agent
         ua = UserAgent()
